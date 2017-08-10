@@ -1,14 +1,19 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar  color="dark">
     <ion-title>
-      Ionic Blank
+      Totem's Star
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <button (click)="goToEventos()" color="morado" ion-button block large >Totem's Eventos</button>
+  <button (click)="goToCorporativos()" color="morado" ion-button block large >Totem's Corporativos</button>
+  <ion-list>
+    <ion-item><ion-icon color="secondary" icon-left name="logo-whatsapp"></ion-icon> 04XX-XXX XX XX</ion-item>
+    <ion-item><ion-icon color="primary" icon-left name="logo-twitter"></ion-icon> @totemStar</ion-item>
+    <ion-item><ion-icon icon-left name="logo-instagram"></ion-icon> @totemStar</ion-item>
+    <ion-item><ion-icon color="primary" icon-left name="logo-facebook"></ion-icon> Totem's Star</ion-item>
+    <ion-item><ion-icon color="danger" icon-left name="mail"></ion-icon> contacto@totemstar.com</ion-item>
+  </ion-list>
 </ion-content>
