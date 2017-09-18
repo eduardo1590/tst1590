@@ -22,6 +22,7 @@ declare var cordova: any; // global variable for paths
 export class CamaraCorporativaPage {
 
   picture:string;
+  tipoEvento: number;
 
   constructor(private diagnostic: Diagnostic,
             public navCtrl: NavController,
@@ -29,6 +30,7 @@ export class CamaraCorporativaPage {
             public toastCtrl: ToastController,
             public cameraPreview: CameraPreview,
             public file: File) {
+    this.tipoEvento = this.navParams.get("tipo");
     this.checkPermissions();
 }
  
@@ -89,7 +91,10 @@ checkPermissions() {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       //this.moveFileToExternalStorage(this.picture);
       this.cameraPreview.stopCamera();
-      this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+      if (this.tipoEvento == 1)
+        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+      else
+        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';

@@ -59,7 +59,7 @@ export class TotemCorporativosPage {
   }
 
   goToCamaraCorporativa(){
-    this.navCtrl.push(CamaraCorporativaPage);
+    this.navCtrl.push(CamaraCorporativaPage, {tipo: 1});
   }
 
 }

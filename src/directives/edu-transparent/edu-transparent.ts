@@ -13,7 +13,7 @@ export class EduTransparentDirective {
 
   constructor(public elementRef: ElementRef) {
     console.log('Hello EduTransparentDirective Directive');
-    this.elementRef.nativeElement.style.backgroundColor = 'transparent';
+    this.elementRef.nativeElement.style.backgroundColor = '#fff';
   }
 
 }

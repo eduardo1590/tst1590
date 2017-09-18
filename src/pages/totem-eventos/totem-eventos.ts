@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 //import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 //import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CrearContactoPage } from '../crear-contacto/crear-contacto';
+import { CamaraCorporativaPage } from '../camara-corporativa/camara-corporativa';
 import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -52,6 +53,10 @@ export class TotemEventosPage {
   modalNuevoContacto(){
     let modal = this.modalCtrl.create(CrearContactoPage);
     modal.present();
+  }
+
+  goToCamaraCorporativa(){
+    this.navCtrl.push(CamaraCorporativaPage, {tipo: 2});
   }
 
 }
