@@ -18,8 +18,11 @@ import { TotemEventosPage } from '../totem-eventos/totem-eventos';
 export class CompartirEventosPage {
 
   image: string;
+  nombreEvento: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing, private printer: Printer) {
     this.image = navParams.get('image');
+    this.nombreEvento = this.navParams.get("nombreEvento");
   }
 
   ionViewDidLoad() {
@@ -28,14 +31,22 @@ export class CompartirEventosPage {
 
    sharingWhatsapp(){
     let picture = this.image;
-    let message = "Totem's Star";
+    let message = "Enviado desde Totem's Star App en " + this.nombreEvento;
     let url = "www.eduardo1590.esy.es";
     this.socialSharing.shareViaWhatsApp(message, picture, url);
   }
 
+  directWhatsApp(){
+    let receiver = "";
+    let picture = this.image;
+    let message = "Enviado desde Totem's Star App en " + this.nombreEvento;
+    let url = "www.eduardo1590.esy.es";
+    this.socialSharing.shareViaWhatsAppToReceiver(receiver, message, picture, url);
+  }
+
   sharingMail(){
     let picture = this.image;
-    let message = "Enviado desde Totem's Star App";
+    let message = "Enviado desde Totem's Star App en " + this.nombreEvento;
     this.socialSharing.shareViaEmail(message, "Totem's Star", [""], [""], [""], picture);
   } 
 
@@ -57,6 +68,6 @@ export class CompartirEventosPage {
   }
 
   goHome(){
-    this.navCtrl.setRoot(TotemEventosPage);
+    this.navCtrl.setRoot(TotemEventosPage, {nombreEvento:this.nombreEvento});
   }
 }

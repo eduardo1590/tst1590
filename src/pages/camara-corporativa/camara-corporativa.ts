@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
+import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
@@ -23,6 +24,7 @@ export class CamaraCorporativaPage {
 
   picture:string;
   tipoEvento: number;
+  nombreEvento: string;
 
   constructor(private diagnostic: Diagnostic,
             public navCtrl: NavController,
@@ -31,6 +33,7 @@ export class CamaraCorporativaPage {
             public cameraPreview: CameraPreview,
             public file: File) {
     this.tipoEvento = this.navParams.get("tipo");
+    this.nombreEvento = this.navParams.get("nombreEvento");
     this.checkPermissions();
 }
  
@@ -90,11 +93,12 @@ checkPermissions() {
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       //this.moveFileToExternalStorage(this.picture);
+      //al guardarla debo colocarle el nombre del evento
       this.cameraPreview.stopCamera();
       if (this.tipoEvento == 1)
-        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture, nombreEvento:this.nombreEvento});
       else
-        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+        this.navCtrl.push(CompartirEventosPage, {image: this.picture, nombreEvento:this.nombreEvento});
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';

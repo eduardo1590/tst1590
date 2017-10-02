@@ -12,6 +12,7 @@ import { CrearContactoPage } from '../pages/crear-contacto/crear-contacto';
 import { CamaraCorporativaPage } from '../pages/camara-corporativa/camara-corporativa'
 import { CompartirCorporativoPage } from '../pages/compartir-corporativo/compartir-corporativo';
 import { CompartirEventosPage } from '../pages/compartir-eventos/compartir-eventos';
+import { InfoEventoPage } from '../pages/info-evento/info-evento';
 
 import { Camera } from '@ionic-native/camera';
 import { Contacts } from '@ionic-native/contacts';
@@ -32,6 +33,7 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CamaraCorporativaPage,
     CompartirEventosPage,
     CompartirCorporativoPage,
+    InfoEventoPage,
     EduTransparentDirective
   ],
   imports: [
@@ -47,7 +49,8 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CamaraCorporativaPage,
     CompartirEventosPage,
     CompartirCorporativoPage,
-    CrearContactoPage
+    CrearContactoPage,
+    InfoEventoPage
   ],
   providers: [
     StatusBar,

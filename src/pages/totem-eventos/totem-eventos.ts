@@ -20,12 +20,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class TotemEventosPage {
   image: string = null;
+  nombreEvento: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private camera: Camera) {
-     /*this.myForm = this.fb.group({
-      name: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]],
-    });*/
+    this.nombreEvento = this.navParams.get("nombreEvento");
   }
 
   ionViewDidLoad() {
@@ -56,7 +54,7 @@ export class TotemEventosPage {
   }
 
   goToCamaraCorporativa(){
-    this.navCtrl.push(CamaraCorporativaPage, {tipo: 2});
+    this.navCtrl.push(CamaraCorporativaPage, {tipo: 2, nombreEvento:this.nombreEvento});
   }
 
 }
