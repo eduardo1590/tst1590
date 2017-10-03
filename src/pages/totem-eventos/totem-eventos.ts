@@ -21,9 +21,11 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class TotemEventosPage {
   image: string = null;
   nombreEvento: string;
+  logo: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private camera: Camera) {
     this.nombreEvento = this.navParams.get("nombreEvento");
+    this.logo = this.navParams.get("logo");
   }
 
   ionViewDidLoad() {

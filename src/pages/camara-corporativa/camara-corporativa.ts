@@ -32,8 +32,8 @@ export class CamaraCorporativaPage {
             public toastCtrl: ToastController,
             public cameraPreview: CameraPreview,
             public file: File) {
-    this.tipoEvento = this.navParams.get("tipo");
-    this.nombreEvento = this.navParams.get("nombreEvento");
+    /*this.tipoEvento = this.navParams.get("tipo");
+    this.nombreEvento = this.navParams.get("nombreEvento");*/
     this.checkPermissions();
 }
  

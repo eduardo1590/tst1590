@@ -32,6 +32,10 @@
     <ion-item *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
       <p color="danger" ion-text *ngIf="myForm.get('name').hasError('required')">Campo requerido</p>
     </ion-item>
+    <ion-item>
+      <ion-label>Seleccionar un logo</ion-label>
+      <ion-checkbox formControlName="logo" checked="true"></ion-checkbox>
+    </ion-item>
   </ion-list>
   <div padding>
     <button ion-button color="primary" block type="submit" [disabled]="myForm.invalid">Guardar</button>
