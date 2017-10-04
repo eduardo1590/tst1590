@@ -1,11 +1,20 @@
 <ion-header>
   <ion-navbar  color="dark">
-    <ion-title>
-      Totem's Star
-    </ion-title>
-    <button ion-button icon-only menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+      <ion-toolbar>
+          <ion-title>
+              Totem's Star
+            </ion-title>
+            <button ion-button icon-only menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+          <ion-buttons end>
+            <button ion-button icon-only (click)="goToConfiguracion()" >
+              <ion-icon name="settings"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+
+   
   </ion-navbar>
 </ion-header>
 
@@ -23,10 +32,6 @@
 
 <ion-footer>
     <ion-toolbar>
-        <ion-grid>
-            <ion-row>
-              <ion-col offset-5><ion-title>www.totemstar.com</ion-title></ion-col>
-            </ion-row>
-          </ion-grid>
+      <h3>www.totemstar.com</h3>
     </ion-toolbar>
   </ion-footer>
