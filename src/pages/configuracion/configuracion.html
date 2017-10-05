@@ -12,6 +12,29 @@
 
 <ion-content padding>
 
+    <ion-list>
+        
+          <ion-item>
+            <ion-label floating>Nombre del Evento</ion-label>
+            <ion-input type="text" [(ngModel)]="nombreEvento" name="nombreEvento"></ion-input>
+          </ion-item>
+
+    </ion-list>
+
+        <button ion-button icon-left  color="morado" (click)="seleccionarLogo()">
+            <ion-icon name="image" ></ion-icon>
+            Carga una imagen
+        </button>
+
+        <ion-card *ngIf="nombreEvento && logoEvento">
+            <img src="{{logoEvento}}"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{nombreEvento}}
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+
 </ion-content>
 
 <ion-footer>
