@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
+import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
@@ -94,7 +95,7 @@ checkPermissions() {
       if (this.tipoEvento == 1)
         this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
       else
-        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+        this.navCtrl.push(CompartirEventosPage, {image: this.picture});
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';
