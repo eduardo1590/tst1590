@@ -61,13 +61,13 @@ checkPermissions() {
   initializePreview(){
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 0,
+      y: 56,
       width: window.screen.width,
-      height: window.screen.height,
+      height: 320,
       camera: 'rear',
       tapPhoto: true,
       previewDrag: true,
-      toBack: true,
+      toBack: false,
       alpha: 1
     };
 
