@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
 import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
@@ -16,10 +15,11 @@ declare var cordova: any; // global variable for paths
 })
 export class CamaraCorporativaPage {
 
-  picture:string;
+  picture: string;
   tipoEvento: number;
   nombreEvento: any;
   logoEvento: any;
+  mensaje: string = '';
 
   constructor(private diagnostic: Diagnostic,
             public navCtrl: NavController,
@@ -87,6 +87,8 @@ checkPermissions() {
       quality: 100
     }
 
+    this.contador();
+
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       //this.moveFileToExternalStorage(this.picture);
@@ -136,6 +138,30 @@ checkPermissions() {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CamaraCorporativaPage');
+  }
+
+  contador() {
+    console.log(this.mensaje);
+    this.mensaje = "5 Preparate";
+    setTimeout(() => {
+      console.log(this.mensaje);
+      setTimeout(() => {
+        this.mensaje = "4 Abracense";
+        console.log(this.mensaje);
+        setTimeout(() => {
+          this.mensaje = "3 Besos";
+          console.log(this.mensaje);
+          setTimeout(() => {
+            this.mensaje = "2 Sonrie";
+            console.log(this.mensaje);
+            setTimeout(() => {
+              this.mensaje = "1 Totem's Star";
+              console.log(this.mensaje);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
   }
 
 }
