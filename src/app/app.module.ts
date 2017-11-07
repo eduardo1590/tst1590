@@ -22,6 +22,7 @@ import { Printer } from '@ionic-native/printer';
 import { File } from '@ionic-native/file';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { EduTransparentDirective } from '../directives/edu-transparent/edu-transparent';
+import { DataEventoServiceProvider } from '../providers/data-evento-service/data-evento-service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CameraPreview,
     File,
     Diagnostic,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataEventoServiceProvider
   ]
 })
 export class AppModule {}

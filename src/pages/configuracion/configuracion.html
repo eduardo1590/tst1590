@@ -33,7 +33,12 @@
                 {{nombreEvento}}
               </ion-card-title>
             </ion-card-content>
-          </ion-card>
+        </ion-card>
+
+        <button *ngIf="nombreEvento !=''" ion-button icon-left (click)="guardar()">
+          <ion-icon name="archive"></ion-icon>
+          Guardar
+        </button>
 
 </ion-content>
 

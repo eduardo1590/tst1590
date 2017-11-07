@@ -20,8 +20,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class TotemEventosPage {
   image: string = null;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private camera: Camera) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              private modalCtrl: ModalController, private camera: Camera) {
      /*this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]],

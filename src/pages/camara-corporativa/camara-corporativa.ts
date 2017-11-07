@@ -6,15 +6,9 @@ import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { DataEventoServiceProvider } from '../../providers/data-evento-service/data-evento-service';
 import { File } from '@ionic-native/file';
 declare var cordova: any; // global variable for paths
-
-/**
- * Generated class for the CamaraCorporativaPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-camara-corporativa',
@@ -24,14 +18,19 @@ export class CamaraCorporativaPage {
 
   picture:string;
   tipoEvento: number;
+  nombreEvento: any;
+  logoEvento: any;
 
   constructor(private diagnostic: Diagnostic,
             public navCtrl: NavController,
             public navParams: NavParams, 
             public toastCtrl: ToastController,
             public cameraPreview: CameraPreview,
+            public datosEvento: DataEventoServiceProvider,
             public file: File) {
     this.tipoEvento = this.navParams.get("tipo");
+    this.nombreEvento = this.datosEvento.getNombreEvento();
+    this.logoEvento = this.datosEvento.getLogoEvento();
     this.checkPermissions();
 }
  
@@ -93,9 +92,9 @@ checkPermissions() {
       //this.moveFileToExternalStorage(this.picture);
       this.cameraPreview.stopCamera();
       if (this.tipoEvento == 1)
-        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture});
+        this.navCtrl.push(CompartirCorporativoPage, {image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento});
       else
-        this.navCtrl.push(CompartirEventosPage, {image: this.picture});
+        this.navCtrl.push(CompartirEventosPage, {image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento});
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';

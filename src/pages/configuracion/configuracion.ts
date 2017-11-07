@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-/**
- * Generated class for the ConfiguracionPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { DataEventoServiceProvider } from '../../providers/data-evento-service/data-evento-service';
 
 @Component({
   selector: 'page-configuracion',
@@ -15,14 +9,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class ConfiguracionPage {
 
-  nombreEvento: string = '';
+  nombreEvento: any = '';
   logoEvento: any = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public dataEvento: DataEventoServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfiguracionPage');
+
   }
 
   seleccionarLogo(){
@@ -38,6 +32,12 @@ export class ConfiguracionPage {
     .catch(error =>{
       console.error( error );
     });
+  }
+
+  guardar(){
+    this.dataEvento.setNombreEvento(this.nombreEvento);
+    this.dataEvento.setLogoEvento(this.logoEvento);
+    this.navCtrl.pop();
   }
 
 }

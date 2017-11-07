@@ -17,8 +17,13 @@ import { TotemCorporativosPage } from '../totem-corporativos/totem-corporativos'
 })
 export class CompartirCorporativoPage {
   image: string;
+  logo: any;
+  nombre: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private socialSharing: SocialSharing, private printer: Printer) {
     this.image = navParams.get('image');
+    this.logo = navParams.get('logo');
+    this.nombre = navParams.get('nombre');
   }
 
   ionViewDidLoad() {
@@ -27,14 +32,14 @@ export class CompartirCorporativoPage {
 
   sharingWhatsapp(){
     let picture = this.image;
-    let message = "Totem's Star";
+    let message = "Enviado desde Totem's Star App "+this.nombre;
     let url = "www.eduardo1590.esy.es";
     this.socialSharing.shareViaWhatsApp(message, picture, url);
   }
 
   sharingMail(){
     let picture = this.image;
-    let message = "Enviado desde Totem's Star App";
+    let message = "Enviado desde Totem's Star App " + this.nombre;
     this.socialSharing.shareViaEmail(message, "Totem's Star", [""], [""], [""], picture);
   } 
 
@@ -57,20 +62,20 @@ export class CompartirCorporativoPage {
 
   sharingTwitter(){
     let picture = this.image;
-    let message = "Enviado desde Totem's Star App";
+    let message = "Enviado desde Totem's Star App " + this.nombre;
     let url = "www.eduardo1590.esy.es";
     this.socialSharing.shareViaTwitter(message, picture, url);
   }
 
   sharingInstagram(){
     let picture = this.image;
-    let message = "Enviado desde Totem's Star App";
+    let message = "Enviado desde Totem's Star App " + this.nombre;
     this.socialSharing.shareViaInstagram(message, picture);
   }
 
   sharingFacebook(){
     let picture = this.image;
-    let message = "Totem's Star";
+    let message = "Enviado desde Totem's Star App " + this.nombre;
     let url = "www.eduardo1590.esy.es";
     this.socialSharing.shareViaFacebook(message, picture, url);
   }
