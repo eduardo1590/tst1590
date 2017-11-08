@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
 import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
@@ -25,6 +25,7 @@ export class CamaraCorporativaPage {
             public navCtrl: NavController,
             public navParams: NavParams, 
             public toastCtrl: ToastController,
+            public loadingCtrl: LoadingController,
             public cameraPreview: CameraPreview,
             public datosEvento: DataEventoServiceProvider,
             public file: File) {
@@ -141,27 +142,32 @@ checkPermissions() {
   }
 
   contador() {
-    console.log(this.mensaje);
-    this.mensaje = "5 Preparate";
+    this.mensaje = "5 PREPARATE!";
+    this.presentLoading(this.mensaje);
     setTimeout(() => {
-      console.log(this.mensaje);
+      this.mensaje = "4 ABRACENSE";
+      this.presentLoading(this.mensaje);
       setTimeout(() => {
-        this.mensaje = "4 Abracense";
-        console.log(this.mensaje);
+        this.mensaje = "3 BESOS";
+        this.presentLoading(this.mensaje);
         setTimeout(() => {
-          this.mensaje = "3 Besos";
-          console.log(this.mensaje);
+          this.mensaje = "2 SONRIE";
+          this.presentLoading(this.mensaje);
           setTimeout(() => {
-            this.mensaje = "2 Sonrie";
-            console.log(this.mensaje);
-            setTimeout(() => {
-              this.mensaje = "1 Totem's Star";
-              console.log(this.mensaje);
-            }, 1000);
+            this.mensaje = "1 TOTEM'S STAR";
+            this.presentLoading(this.mensaje);
           }, 1000);
         }, 1000);
       }, 1000);
     }, 1000);
+  }
+
+  presentLoading(msg) {
+    let loader = this.loadingCtrl.create({
+      content: msg,
+      duration: 1000
+    });
+    loader.present();
   }
 
 }
