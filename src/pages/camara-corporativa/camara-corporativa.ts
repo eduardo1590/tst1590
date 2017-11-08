@@ -4,7 +4,7 @@ import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-cor
 import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
 import { Diagnostic } from '@ionic-native/diagnostic';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions } from '@ionic-native/camera-preview';
 import { DataEventoServiceProvider } from '../../providers/data-evento-service/data-evento-service';
 import { File } from '@ionic-native/file';
 declare var cordova: any; // global variable for paths
