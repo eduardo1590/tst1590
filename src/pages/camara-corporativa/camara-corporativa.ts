@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
-
+import { NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
 import { CompartirEventosPage } from '../compartir-eventos/compartir-eventos';
 
 import { Diagnostic } from '@ionic-native/diagnostic';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions } from '@ionic-native/camera-preview';
 import { DataEventoServiceProvider } from '../../providers/data-evento-service/data-evento-service';
 import { File } from '@ionic-native/file';
 declare var cordova: any; // global variable for paths
@@ -16,15 +15,17 @@ declare var cordova: any; // global variable for paths
 })
 export class CamaraCorporativaPage {
 
-  picture:string;
+  picture: string;
   tipoEvento: number;
   nombreEvento: any;
   logoEvento: any;
+  mensaje: string = '';
 
   constructor(private diagnostic: Diagnostic,
             public navCtrl: NavController,
             public navParams: NavParams, 
             public toastCtrl: ToastController,
+            public loadingCtrl: LoadingController,
             public cameraPreview: CameraPreview,
             public datosEvento: DataEventoServiceProvider,
             public file: File) {
@@ -61,13 +62,13 @@ checkPermissions() {
   initializePreview(){
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 0,
+      y: 56,
       width: window.screen.width,
-      height: window.screen.height,
+      height: 320,
       camera: 'rear',
-      tapPhoto: true,
-      previewDrag: true,
-      toBack: true,
+      tapPhoto: false,
+      previewDrag: false,
+      toBack: false,
       alpha: 1
     };
 
@@ -87,7 +88,9 @@ checkPermissions() {
       quality: 100
     }
 
-    this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
+    this.contador(pictureOpts);
+
+   /* this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       //this.moveFileToExternalStorage(this.picture);
       this.cameraPreview.stopCamera();
@@ -98,17 +101,23 @@ checkPermissions() {
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';
-    });
+    }); */
 
   }
 
-  changeEffect() {
+  /*changeEffect() {
     // Create an array with 5 effects
     let effects: any = ['none', 'aqua', 'blackboard', 'mono', 'negative','posterize', 'sepia', 'solarize', 'whiteboard'];
  
     let randomEffect: string = effects[Math.floor(
                                 Math.random() * effects.length)];
     this.cameraPreview.setColorEffect(randomEffect);
+  }*/
+
+  changeEffect(i) {
+    console.log(i);
+    let effects: any = ['none', 'aqua', 'blackboard', 'mono', 'sepia', 'negative', 'posterize', 'solarize', 'whiteboard'];
+    this.cameraPreview.setColorEffect(effects[i]);
   }
 
   moveFileToExternalStorage(fileName: string) {
@@ -136,6 +145,47 @@ checkPermissions() {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CamaraCorporativaPage');
+  }
+
+  contador(pictureOpts) {
+    this.mensaje = "5 PREPARATE!";
+    this.presentLoading(this.mensaje);
+    setTimeout(() => {
+      this.mensaje = "4 ABRACENSE!";
+      this.presentLoading(this.mensaje);
+      setTimeout(() => {
+        this.mensaje = "3 BESOS!";
+        this.presentLoading(this.mensaje);
+        setTimeout(() => {
+          this.mensaje = "2 SONRIE!";
+          this.presentLoading(this.mensaje);
+          setTimeout(() => {
+            this.mensaje = "1 TOTEM'S STAR!";
+            //this.presentLoading(this.mensaje);
+            this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
+              this.picture = 'data:image/jpeg;base64,' + imageData;
+              //this.moveFileToExternalStorage(this.picture);
+              this.cameraPreview.stopCamera();
+              if (this.tipoEvento == 1)
+                this.navCtrl.push(CompartirCorporativoPage, { image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento });
+              else
+                this.navCtrl.push(CompartirEventosPage, { image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento });
+            }, (err) => {
+              console.log(err);
+              this.picture = 'assets/img/test.jpg';
+            });
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }
+
+  presentLoading(msg) {
+    let loader = this.loadingCtrl.create({
+      content: msg,
+      duration: 1000
+    });
+    loader.present();
   }
 
 }
