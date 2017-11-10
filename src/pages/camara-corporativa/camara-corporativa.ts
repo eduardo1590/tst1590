@@ -88,9 +88,9 @@ checkPermissions() {
       quality: 100
     }
 
-    this.contador();
+    this.contador(pictureOpts);
 
-    this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
+   /* this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       //this.moveFileToExternalStorage(this.picture);
       this.cameraPreview.stopCamera();
@@ -101,7 +101,7 @@ checkPermissions() {
     }, (err) => {
       console.log(err);
       this.picture = 'assets/img/test.jpg';
-    });
+    }); */
 
   }
 
@@ -141,7 +141,7 @@ checkPermissions() {
     console.log('ionViewDidLoad CamaraCorporativaPage');
   }
 
-  contador() {
+  contador(pictureOpts) {
     this.mensaje = "5 PREPARATE!";
     this.presentLoading(this.mensaje);
     setTimeout(() => {
@@ -155,7 +155,19 @@ checkPermissions() {
           this.presentLoading(this.mensaje);
           setTimeout(() => {
             this.mensaje = "1 TOTEM'S STAR";
-            this.presentLoading(this.mensaje);
+            //this.presentLoading(this.mensaje);
+            this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
+              this.picture = 'data:image/jpeg;base64,' + imageData;
+              //this.moveFileToExternalStorage(this.picture);
+              this.cameraPreview.stopCamera();
+              if (this.tipoEvento == 1)
+                this.navCtrl.push(CompartirCorporativoPage, { image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento });
+              else
+                this.navCtrl.push(CompartirEventosPage, { image: this.picture, nombre: this.nombreEvento, logo: this.logoEvento });
+            }, (err) => {
+              console.log(err);
+              this.picture = 'assets/img/test.jpg';
+            });
           }, 1000);
         }, 1000);
       }, 1000);
