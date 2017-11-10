@@ -1,5 +1,12 @@
 
     ion-app, ion-content {
       background-color: transparent !important;
+
+      .displayBottom{
+        padding-top: 90%;
+        bottom: 0; 
+        margin-left: 48%;
+      }
+
     }
 

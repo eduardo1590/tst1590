@@ -66,8 +66,8 @@ checkPermissions() {
       width: window.screen.width,
       height: 320,
       camera: 'rear',
-      tapPhoto: true,
-      previewDrag: true,
+      tapPhoto: false,
+      previewDrag: false,
       toBack: false,
       alpha: 1
     };
@@ -105,13 +105,19 @@ checkPermissions() {
 
   }
 
-  changeEffect() {
+  /*changeEffect() {
     // Create an array with 5 effects
     let effects: any = ['none', 'aqua', 'blackboard', 'mono', 'negative','posterize', 'sepia', 'solarize', 'whiteboard'];
  
     let randomEffect: string = effects[Math.floor(
                                 Math.random() * effects.length)];
     this.cameraPreview.setColorEffect(randomEffect);
+  }*/
+
+  changeEffect(i) {
+    console.log(i);
+    let effects: any = ['none', 'aqua', 'blackboard', 'mono', 'sepia', 'negative', 'posterize', 'solarize', 'whiteboard'];
+    this.cameraPreview.setColorEffect(effects[i]);
   }
 
   moveFileToExternalStorage(fileName: string) {
@@ -145,16 +151,16 @@ checkPermissions() {
     this.mensaje = "5 PREPARATE!";
     this.presentLoading(this.mensaje);
     setTimeout(() => {
-      this.mensaje = "4 ABRACENSE";
+      this.mensaje = "4 ABRACENSE!";
       this.presentLoading(this.mensaje);
       setTimeout(() => {
-        this.mensaje = "3 BESOS";
+        this.mensaje = "3 BESOS!";
         this.presentLoading(this.mensaje);
         setTimeout(() => {
-          this.mensaje = "2 SONRIE";
+          this.mensaje = "2 SONRIE!";
           this.presentLoading(this.mensaje);
           setTimeout(() => {
-            this.mensaje = "1 TOTEM'S STAR";
+            this.mensaje = "1 TOTEM'S STAR!";
             //this.presentLoading(this.mensaje);
             this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
               this.picture = 'data:image/jpeg;base64,' + imageData;
