@@ -6,15 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Comparte!</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <img class="center" [src]="image"/>
+<ion-content>
+  <img class="logo" [src]="image"/>
   <button ion-button round color="secondary" large (click)="sharingWhatsapp()"><ion-icon name="logo-whatsapp"></ion-icon></button>
   <button ion-button round color="danger" large (click)="sharingMail()"><ion-icon name="mail"></ion-icon></button>
   <button ion-button round color="light" large (click)="print()"><ion-icon name="print"></ion-icon></button>

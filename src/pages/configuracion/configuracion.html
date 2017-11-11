@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar  color="dark">
+    <ion-title>
+      configuracion
+    </ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        
+          <ion-item>
+            <ion-label floating>Nombre del Evento</ion-label>
+            <ion-input type="text" [(ngModel)]="nombreEvento" name="nombreEvento"></ion-input>
+          </ion-item>
+
+    </ion-list>
+
+        <button ion-button icon-left  color="morado" (click)="seleccionarLogo()">
+            <ion-icon name="image" ></ion-icon>
+            Carga una imagen
+        </button>
+
+        <ion-card *ngIf="nombreEvento && logoEvento">
+            <img src="{{logoEvento}}"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{nombreEvento}}
+              </ion-card-title>
+            </ion-card-content>
+        </ion-card>
+
+        <button *ngIf="nombreEvento !=''" ion-button icon-left (click)="guardar()">
+          <ion-icon name="archive"></ion-icon>
+          Guardar
+        </button>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <h3>www.totemstar.com</h3>
+    </ion-toolbar>
+  </ion-footer>

@@ -1,13 +1,38 @@
-<ion-content padding>
-  <!--<ion-fab right top>
-    <button ion-fab color="secondary" (click)="changeEffect()">
+<ion-header>
+
+    <ion-navbar color="dark">
+        <ion-title *ngIf="mensaje == ''">Captura el momento!</ion-title>
+        <ion-title> {{ mensaje }} </ion-title>   
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary">
         <ion-icon name="md-color-wand"></ion-icon>
     </button>
-</ion-fab>-->
- 
-<ion-fab right bottom>
-    <button ion-fab color="primary" (click)="takePicture()">
-        <ion-icon name="md-camera"></ion-icon>
-    </button>
+    <ion-fab-list side="left">
+        <button ion-fab (click)="changeEffect(0)"><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(1)"><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(2)"><ion-icon name="logo-vimeo"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(3)"><ion-icon name="logo-googleplus"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(4)"><ion-icon name="logo-facebook"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(5)"><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(6)"><ion-icon name="logo-vimeo"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(7)"><ion-icon name="logo-googleplus"></ion-icon></button>
+        <button ion-fab (click)="changeEffect(8)"><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
 </ion-fab>
+
+    <div class="displayBottom">
+        <button ion-button clear icon-only large color="danger" (click)="takePicture()"><ion-icon name="radio-button-on"></ion-icon></button>
+    </div>
+    
+
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <h3>www.totemstar.com</h3>
+    </ion-toolbar>
+</ion-footer>

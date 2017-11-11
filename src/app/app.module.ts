@@ -12,7 +12,7 @@ import { CrearContactoPage } from '../pages/crear-contacto/crear-contacto';
 import { CamaraCorporativaPage } from '../pages/camara-corporativa/camara-corporativa'
 import { CompartirCorporativoPage } from '../pages/compartir-corporativo/compartir-corporativo';
 import { CompartirEventosPage } from '../pages/compartir-eventos/compartir-eventos';
-import { InfoEventoPage } from '../pages/info-evento/info-evento';
+import { ConfiguracionPage } from '../pages/configuracion/configuracion';
 
 import { Camera } from '@ionic-native/camera';
 import { Contacts } from '@ionic-native/contacts';
@@ -22,6 +22,7 @@ import { Printer } from '@ionic-native/printer';
 import { File } from '@ionic-native/file';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { EduTransparentDirective } from '../directives/edu-transparent/edu-transparent';
+import { DataEventoServiceProvider } from '../providers/data-evento-service/data-evento-service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CamaraCorporativaPage,
     CompartirEventosPage,
     CompartirCorporativoPage,
-    InfoEventoPage,
+    ConfiguracionPage,
     EduTransparentDirective
   ],
   imports: [
@@ -49,8 +50,8 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CamaraCorporativaPage,
     CompartirEventosPage,
     CompartirCorporativoPage,
-    CrearContactoPage,
-    InfoEventoPage
+    ConfiguracionPage,
+    CrearContactoPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +63,8 @@ import { EduTransparentDirective } from '../directives/edu-transparent/edu-trans
     CameraPreview,
     File,
     Diagnostic,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataEventoServiceProvider
   ]
 })
 export class AppModule {}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { TotemCorporativosPage } from '../totem-corporativos/totem-corporativos';
 import { TotemEventosPage } from '../totem-eventos/totem-eventos';
-import { InfoEventoPage } from '../info-evento/info-evento';
+import { ConfiguracionPage } from '../configuracion/configuracion';
 
 @Component({
   selector: 'page-home',
@@ -22,9 +22,8 @@ export class HomePage {
     this.navCtrl.push(TotemCorporativosPage);
   }
 
-  modalInfoEvento(tipo){
-    let modal = this.modalCtrl.create(InfoEventoPage, {tipo: tipo});
-    modal.present();
+  goToConfiguracion(){
+    this.navCtrl.push(ConfiguracionPage);
   }
 
 }
