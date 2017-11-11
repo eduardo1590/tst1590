@@ -1,19 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-//import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
-//import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CrearContactoPage } from '../crear-contacto/crear-contacto';
 import { CamaraCorporativaPage } from '../camara-corporativa/camara-corporativa';
 import { CompartirCorporativoPage } from '../compartir-corporativo/compartir-corporativo';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-
-/**
- * Generated class for the TotemCorporativosPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-totem-corporativos',
