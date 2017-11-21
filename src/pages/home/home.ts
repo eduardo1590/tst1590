@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { TotemCorporativosPage } from '../totem-corporativos/totem-corporativos';
 import { TotemEventosPage } from '../totem-eventos/totem-eventos';
 import { ConfiguracionPage } from '../configuracion/configuracion';
@@ -10,7 +10,7 @@ import { ConfiguracionPage } from '../configuracion/configuracion';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController) {
 
   }
   
